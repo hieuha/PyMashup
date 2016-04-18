@@ -17,8 +17,8 @@ class Download(object):
             os.mkdir(self.out_dir)
 
     def download(self, url, file_name):
+        raw = self.bot.get(url)
         if raw:
-            raw = self.bot.get(url)
             f = open(self.out_dir+'/'+file_name, 'wb')
             f.write(raw)
             f.close()
