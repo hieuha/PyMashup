@@ -1,6 +1,6 @@
 import glob
 import re
-
+import os
 
 class Lyric(object):
 
@@ -19,14 +19,15 @@ class Lyric(object):
         for lyric in self.lyrics:
             print 'Processing %s' % lyric
             file_mp3 = lyric.replace('.lrc', '.mp3')
-            with open(lyric, 'r') as f:
-                for _ in xrange(7):  # Pass Header Zing
-                    next(f)
-                for line in f:
-                    if pattern in line:
-                        start = line.strip()
-                        stop = f.next().strip()
-                        line = '%s %s' % (start, stop)
-                        f_w.write(file_mp3+'|'+self.get_time(line))
-            f.close()
+            if not os.stat(lyric).st_size == 0:
+                with open(lyric, 'r') as f:
+                    for _ in xrange(7):  # Pass Header Zing
+                        next(f)
+                    for line in f:
+                        if pattern in line:
+                            start = line.strip()
+                            stop = f.next().strip()
+                            line = '%s %s' % (start, stop)
+                            f_w.write(file_mp3+'|'+self.get_time(line))
+                f.close()
         f_w.close()
