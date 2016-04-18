@@ -18,7 +18,7 @@ class Download(object):
 
     def download(self, url, file_name):
         raw = self.bot.get(url)
-        f = open(self.ourdir+'/'+file_name, 'wb')
+        f = open(self.out_dir+'/'+file_name, 'wb')
         f.write(raw)
         f.close()
         print 'Downloaded %s' % file_name
@@ -27,7 +27,6 @@ class Download(object):
         for song in iter(self.q.get, None):
             name, mp3, lyric = song[0], song[2], song[3]
             file_name = name.strip().replace(' ', '-')
-            print file_name
             self.download(mp3, file_name+'.mp3')
             self.download(lyric, file_name+'.lrc')
             self.q.task_done()
