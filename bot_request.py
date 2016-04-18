@@ -13,15 +13,19 @@ class MyBot(object):
         self.header = {'User-Agent': self.user_agent}
 
     def get(self, url):
-        req = urllib2.Request(url, headers=self.header)
-        res = urllib2.urlopen(req)
-        html = res.read()
+        try:
+            req = urllib2.Request(url, headers=self.header)
+            res = urllib2.urlopen(req)
+            html = res.read()
 
-        if res.info().get('Content-Encoding') == 'gzip':
-            buf = StringIO.StringIO(html)
-            f = gzip.GzipFile(fileobj=buf)
-            html = f.read()
-        return html
+            if res.info().get('Content-Encoding') == 'gzip':
+                buf = StringIO.StringIO(html)
+                f = gzip.GzipFile(fileobj=buf)
+                html = f.read()
+            return html
+        except Exception, e:
+            print e
+            return None
 
     def post(self, data):
         pass

@@ -6,7 +6,7 @@ import download
 import lyric
 import os
 
-pattern = raw_input("Your words for matsubs? ")
+pattern = raw_input("Your words for matshup? ")
 
 if pattern:
     print "Tenten, %s." % pattern
