@@ -12,7 +12,7 @@ class Lyric(object):
 
     def get_time(self, line):
         re_t = re.search(r'\[(.+?)\](.*)\[(.+?)\](.*)', line)
-        return "%s %s\n" % (re_t.group(1), re_t.group(3))
+        return "%s|%s\n" % (re_t.group(1), re_t.group(3))
 
     def search(self, pattern):
         f_w = open(self.in_dir+'/times.txt', 'w')

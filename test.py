@@ -11,6 +11,9 @@
 # my_download.start()
 
 import lyric
-
+import os
 my_lyric = lyric.Lyric()
 my_lyric.search('tình yêu')
+
+
+# os.system("")
