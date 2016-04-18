@@ -48,3 +48,8 @@ class Download(object):
         for p in threads:
             self.q.put(None)
         self.q.join()
+
+        for thread in threads:
+            thread.join()
+
+        print 'Download Done!'
