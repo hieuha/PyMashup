@@ -13,8 +13,8 @@ if pattern:
     zing = zingmp3.ZingMp3()
     yes = raw_input("Do you want to download? (yes/no)")
     if yes and yes == 'yes':
-        print 'Download Top Ten Zing Mp3 Music'
-        songs = zing.top_song(10)
+        print 'Download Top Zing Mp3 Music'
+        songs = zing.top_song()
         infos = zing.songs_info(songs)
         my_download = download.Download(infos)
         my_download.start()

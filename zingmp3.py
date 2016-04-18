@@ -13,8 +13,8 @@ class ZingMp3(object):
         self.root_url = 'http://mp3.zing.vn/'
         self.bot = bot_request.MyBot()
 
-    def top_song(self, limit):
-        print 'Get Top 10 VPOP'
+    def top_song(self, limit=None):
+        print 'Get Top VPOP'
         url_vn = 'http://mp3.zing.vn/bang-xep-hang/bai-hat-Viet-Nam/IWZ9Z08I.html'
         html = self.bot.get(url_vn)
         soup = BeautifulSoup(html, 'html.parser')
